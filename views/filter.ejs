@@ -1,0 +1,79 @@
+<%- include("partials/header.ejs") %>
+
+
+    <div class="filter-container">
+        <div class="filter-content-container">
+            <section>
+                <!-- <form action="/movie" method="post">
+                    <input type="text" placeholder="Search" name="q" class="search-bar">
+                    <input type="submit" class="submit-search-btn">
+                </form> -->
+
+                <!-- <form action="/search" method="post">
+                <input type="t">
+            </form> -->
+            </section>
+
+            <div>
+                <div>
+                    <div class="filter-by-container">
+                        <h1>See Results:</h1>
+
+
+
+                    </div>
+
+                    <!-- Filtered Shows Container -->
+
+
+
+                    <% if(locals.content) {%>
+                        <div class="movie-show-list">
+
+                            <div class="movie-container">
+                                <% for(let i=0; i<content.length; i++){ %>
+                                    <div class="movie-item">
+
+                                        <img src="<%= content[i].show.image.medium %>" alt="" id="movie-img">
+                                        <p id="movie-title">
+                                            <%= content[i].show.name.slice(0,27) %>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="pagination-container">
+
+                            <ul class="content-container">
+
+
+
+
+                                <li>
+                                    <button onclick="">
+
+
+
+                                    </button>
+                                </li>
+
+
+
+                            </ul>
+
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <%- include("partials/footer.ejs") %>

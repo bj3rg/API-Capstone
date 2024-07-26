@@ -22,24 +22,56 @@ app.get("/", async (req, res) => {
     res.render("error.ejs", error.message);
   }
 });
-app.get("/home", async (req, res) => {
-  res.render("home.ejs");
-});
 
-app.get("/show", async (req, res) => {
+app.get("/home", async (req, res) => {
   try {
     const response = await axios.get(TV_URL + "/shows");
-    const page = req.query.page;
-    const limit = req.query.limit;
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
 
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    const asd = response.data;
+    const result = response.data;
+    const results = {};
+    if (startIndex > 0) {
+      results.previous = {
+        page: page - 1,
+        limit: limit,
+      };
+    }
+    if (endIndex < result.length) {
+      results.next = {
+        page: page + 1,
+        limit: limit,
+      };
+    }
+    let total;
+    results.results = result.slice(startIndex, endIndex);
+    const number = result.length / limit;
+    console.log(number);
+    if (number > Math.floor(number)) {
+      total = Math.floor(number) + 1;
+    } else {
+      total = number;
+    }
 
-    const middle = asd.slice(startIndex, endIndex);
-    console.log(middle);
-    res.render("home.ejs", { content: middle });
-  } catch (error) {}
+    res.render("home.ejs", { content: results, pages: total });
+  } catch (error) {
+    console.error(error.message);
+  }
+});
+
+app.post("/filter", async (req, res) => {
+  try {
+    const bodyData = req.body.q;
+
+    const response = await axios.get(
+      TV_URL + "/search/shows?q=" + `${bodyData}`
+    );
+    res.render("filter.ejs", { content: response.data });
+  } catch (error) {
+    console.error(error.message);
+  }
 });
 
 app.listen(port, () => {
