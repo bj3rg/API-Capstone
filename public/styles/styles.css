@@ -59,12 +59,14 @@ li {
 .mema-button {
   margin-right: 2rem;
   padding: 0.5rem 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
+  background-color: #a7adbb;
+  border: none;
 }
 
 .mema-button:hover {
-  background-color: blue;
-  color: white;
+  background-color: #f6f6f6;
+  color: black;
 }
 
 /* Foooter Style */
@@ -75,6 +77,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #f6f6f6;
 }
 
 /* Footer NAV style */
@@ -153,7 +156,7 @@ footer {
 }
 
 .filter-by-container :hover {
-  color: red;
+  background-color: #f6f6f6;
 }
 
 .pagination-container > ul {
@@ -179,13 +182,21 @@ section {
 }
 
 .search-bar {
-  border-radius: 1rem;
-  padding: 0.5rem 3rem;
+  border-radius: 0.3rem;
+  border: none;
+  padding: 0.5rem;
+  width: 10rem;
 }
 
 .submit-search-btn {
-  border-radius: 0.2rem;
+  border-radius: 0.3rem;
   padding: 0.5rem 1rem;
+  border: none;
+  background-color: #a7adbb;
+}
+
+.submit-search-btn:hover {
+  background-color: #f6f6f6;
 }
 
 /* HOME Movie Container */
@@ -225,4 +236,9 @@ section {
   display: flex;
   justify-content: center;
   min-height: 81vh;
+  color: #f6f6f6;
+}
+
+.filter-content-container {
+  margin-top: 2rem;
 }

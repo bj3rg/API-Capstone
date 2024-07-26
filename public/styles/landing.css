@@ -1,0 +1,97 @@
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", "sans-serif";
+  color: #f6f6f6;
+}
+
+/* Main container CSS */
+.landing-container {
+  display: flex;
+  background-color: #504b5c;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sections Css */
+/* GIF and Tagline */
+.top-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form CSS */
+.landing-search-container {
+  margin-top: 2rem;
+}
+
+.landing-search-container > form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing-search-container > form > input {
+  border-radius: 3rem;
+  border: none;
+  padding: 0 1rem;
+  width: 29rem;
+  height: 2rem;
+}
+
+.landing-search-container > form > button {
+  border-radius: 1rem;
+  border: 1px solid #a0a0a0;
+  background-color: #a7adbb;
+  height: 2.1rem;
+  width: 4rem;
+}
+
+.landing-search-container > form > button > img {
+  width: 2rem;
+}
+.landing-btn {
+  cursor: pointer;
+}
+.landing-btn:hover {
+  background-color: white;
+}
+
+/* Home button hyperlink css */
+.home-btn {
+  margin-top: 2rem;
+  padding: 0.8rem 2rem;
+  text-transform: uppercase;
+  border-radius: 3rem;
+  border: none;
+  background-color: #a7adbb;
+  cursor: pointer;
+}
+
+.home-btn:hover {
+  background-color: white;
+}
+
+/* About content css */
+.about-container {
+  margin-top: 2rem;
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  margin-bottom: 4.3rem;
+}
+
+.about-container > h1 {
+  margin: 5px 0px;
+}
+
+p {
+  margin: 5px 0px;
+}
