@@ -1,0 +1,113 @@
+<%- include("partials/header.ejs") %>
+
+
+    <main>
+        <% if(locals.content && locals.seasons){ %>
+            <div class="top-detail-container">
+                <div class="poster-container">
+                    <img src="<%= content.image.original %>" alt="">
+
+                </div>
+                <div class="episodes-container">
+                    <h1>
+                        <%= content.name %>
+                    </h1>
+
+                    <h5>Episode list here</h5>
+
+                    <div class="tamimi">
+
+
+
+                        <div>
+                            <% for(let num=0; num < seasons.length; num ++){ %>
+                                <button onclick="getEpisode(<%= seasons[num] %>, <%= content.id %>)">
+                                    <h1>Season <%= num+1 %>
+                                </button>
+                                </h1>
+                                <% } %>
+                                    <% console.log(episodes[0]) %>
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="bottom-detail-container">
+                <div class="movie-details-container">
+                    <img src="<%= content.image.original %>" alt="">
+                    <div class="full-detail-container">
+                        <h1>
+                            <%= content.name %>
+                        </h1>
+                        <p>Ratings: <b>
+                                <%= content.rating.average %>
+                            </b> </p>
+                        <p>Summary: <%= content.summary %>
+                        </p>
+
+                        <table>
+                            <tr>
+                                <td>Type:</td>
+                                <th>
+                                    <%=content.type %>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Country:</td>
+                                <th>
+                                    <%= content.network.country.name %>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Genre:</td>
+                                <th>
+
+                                    <% for(let i=0; i<content.genres.length; i++){ %>
+
+                                        <%= content.genres[i] %>,
+
+
+                                            <% } %>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Release:</td>
+                                <th>
+                                    <%= content.premiered %>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Language:</td>
+                                <th>
+                                    <%= content.language %>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>Casts:</td>
+                                <th>
+                                    <% let casts=content._embedded.cast %>
+                                        <% for(let j=0; j<casts.length; j++){ %>
+                                            <%= casts[j].person.name %>
+                                                <% } %>
+
+                                </th>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <% } %>
+    </main>
+
+    <%- include("partials/footer.ejs") %>

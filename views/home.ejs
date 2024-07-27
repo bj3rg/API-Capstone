@@ -29,10 +29,14 @@
                                         <% for(let i=0; i< movieList; i++){ %>
                                             <div class="movie-item">
 
-                                                <img src="<%= movieResult[i].image.medium %>" alt="" id="movie-img">
-                                                <p id="movie-title">
-                                                    <%= movieResult[i].name.slice(0, 27) %>
-                                                </p>
+                                                <a href="/movie?id=<%= movieResult[i].id%>&embed=cast"> <img
+                                                        src="<%= movieResult[i].image.medium %>" alt="" id="movie-img">
+                                                    <p id="movie-title">
+                                                        <%= movieResult[i].id %>
+                                                            <%= movieResult[i].name.slice(0, 27) %>
+
+                                                    </p>
+                                                </a>
                                             </div>
                                             <% } %>
                             </div>
