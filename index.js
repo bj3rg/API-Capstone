@@ -2,6 +2,7 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import e from "express";
 
 //port and app
 const app = express();
@@ -9,8 +10,8 @@ const port = 3000;
 // Filter var
 let bodyDataFilter;
 let responseFilter;
-
-const TV_URL = " https://api.tvmaze.com";
+let episodes;
+const TV_URL = "https://api.tvmaze.com";
 
 // initialize middleware
 app.use(express.static("public"));
@@ -69,7 +70,6 @@ app.post("/filter", async (req, res) => {
     responseFilter = await axios.get(
       TV_URL + "/search/shows?q=" + `${bodyDataFilter}`
     );
-    console.log("DITO" + responseFilter.data + bodyDataFilter);
     res.redirect(`/filter?q=${bodyDataFilter}`);
   } catch (error) {
     console.error(error.message);
@@ -82,6 +82,40 @@ app.get("/filter", async (req, res) => {
   } else {
     res.render("landing.ejs");
   }
+});
+
+app.get("/movie", async (req, res) => {
+  try {
+    const id = req.query.id;
+    const embed = req.query.embed;
+    const response = await axios.get(TV_URL + `/shows/${id}?embed=${embed}`);
+    const response2 = await axios.get(TV_URL + `/shows/${id}/seasons`);
+    const dataResponse2 = response2.data;
+    let episodes = [];
+    let seasons = [];
+
+    // Get all seasons
+    for (let i = 0; i < dataResponse2.length; i++) {
+      // Get episode of current season by ID
+      seasons.push(dataResponse2[i].id);
+    }
+    console.log(episodes);
+    res.render("detail.ejs", {
+      content: response.data,
+      seasons: seasons,
+      episodes: episodes,
+    });
+  } catch (error) {}
+});
+
+app.get("/get-episode", async (req, res) => {
+  const seasonId = req.query.season;
+  const seriesId = req.query.seriesId;
+  try {
+    const response = await axios.get(TV_URL + `/seasons/${seasonId}/episodes`);
+    episodes = response.data;
+    res.render("detail.ejs", {});
+  } catch (error) {}
 });
 
 app.listen(port, () => {
