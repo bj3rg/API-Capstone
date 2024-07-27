@@ -221,6 +221,11 @@ section {
 #movie-img {
   border-radius: 0.5rem;
 }
+
+.movie-item > a {
+  text-decoration: none;
+  color: #f6f6f6;
+}
 .movie-item:hover {
   box-shadow: 0 0 11px #232128;
 }
@@ -241,4 +246,71 @@ section {
 
 .filter-content-container {
   margin-top: 2rem;
+}
+
+/* Detail Css */
+main {
+  width: 100%;
+  background-color: #504b5c;
+  color: #f6f6f6;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+/* TOP CONTAINER CSS */
+.top-detail-container {
+  display: flex;
+  width: 90%;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+  /* justify-content: space-between; */
+}
+/* POSTER CSS */
+.poster-container {
+  height: 600px;
+}
+
+.poster-container > img {
+  border-radius: 1rem;
+  height: 100%;
+}
+/* EPISODE CONTAINER */
+
+.episodes-container {
+  width: 30%;
+  background-color: #9289a8;
+  border-radius: 1rem;
+  height: 600px;
+}
+
+/* BOTTOM CONTAINER CSS */
+.bottom-detail-container {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details-container {
+  width: 70%;
+  background-color: #9289a8;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.movie-details-container > img {
+  width: 250px;
+}
+
+.full-detail-container > h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.tamimi {
 }
